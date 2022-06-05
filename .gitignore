@@ -1,4 +1,3 @@
-.*
-!/.gitignore
+/.streamlit/secrets.toml
 venv/
 *.xlsx
