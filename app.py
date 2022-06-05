@@ -174,7 +174,7 @@ if ch:
                         'Property Plant Equipment', 'Long Term Investments', 'Total Assets', 'Total Current Liabilities', 'Long Term Debt', 'Total Cash From Operating Activities'])
     data.index = ["Revenue", "Cost of Goods Sold", "Selling, General & Admin.Expense", "Depreciation", "Net Income from Continuing Operations", "Accounts Receivables",
                   "Current Assets", "Property, Plant & Equipment", "Securities", "Total Assets", "Current Liabilities", "Total Long-term Debt", "Cash Flow from Operations"]
-                  
+
     data1 = data.copy()
     data1["2022"] = data1["2022"].apply(lambda x: format_currency(
         x, format=None, currency="USD", locale="en_US"))
