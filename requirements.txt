@@ -1,0 +1,9 @@
+Babel==2.10.1
+openpyxl==3.0.10
+pandas==1.4.2
+plotly==5.8.0
+snowflake-connector-python==2.7.8
+streamlit==1.10.0
+streamlit-lottie==0.0.3
+yahooquery==2.2.15
+yfinance==0.1.70
