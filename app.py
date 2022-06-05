@@ -174,37 +174,7 @@ if ch:
                         'Property Plant Equipment', 'Long Term Investments', 'Total Assets', 'Total Current Liabilities', 'Long Term Debt', 'Total Cash From Operating Activities'])
     data.index = ["Revenue", "Cost of Goods Sold", "Selling, General & Admin.Expense", "Depreciation", "Net Income from Continuing Operations", "Accounts Receivables",
                   "Current Assets", "Property, Plant & Equipment", "Securities", "Total Assets", "Current Liabilities", "Total Long-term Debt", "Cash Flow from Operations"]
-
-    # Excel Automation
-
-    wb = load_workbook('Beneish-M-Score.xlsx')
-    ws = wb.active
-
-    while True:   # repeat until the try statement succeeds
-        try:
-            # or "a+", whatever you need
-            myfile = open("Beneish-M-Score.xlsx", "r+")
-            break
-            # exit the loop
-        except IOError:
-            print("Failed to open!!")
-
-    ws['C3'].value = symb.at[ch, 'Symbol']
-    ws['C4'].value = symb.at[ch, 'Companies']
-
-    excel_data = data.reset_index(drop=True)
-    excel_data.index = excel_data.index + 1
-
-    for row in range(8, 21):
-        for col in range(3, 5):
-            char = chr(65 + col)
-            if char == 'D':
-                ws[char + str(row)] = excel_data.at[row-7, "2022"]
-            if char == 'E':
-                ws[char + str(row)] = excel_data.at[row-7, "2021"]
-
-    wb.save('Beneish-M-Score.xlsx')
-
+                  
     data1 = data.copy()
     data1["2022"] = data1["2022"].apply(lambda x: format_currency(
         x, format=None, currency="USD", locale="en_US"))
