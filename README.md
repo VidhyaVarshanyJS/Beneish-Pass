@@ -1,2 +1,3 @@
-# FAStreamlit
-Quality of Financial Statements using Beneish Model
+# Quality of Financial Statements using Beneish Model
+
+
