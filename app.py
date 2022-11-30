@@ -272,14 +272,14 @@ if ch:
 
         cur.execute('INSERT INTO history(Company,M_Score,Status) VALUES (%s,%s,%s)',
                     (symb.at[ch, 'Companies'], float(m_score), status))
-        cur.execute('''DELETE FROM history WHERE Company in (SELECT Company FROM history GROUP BY Company HAVING COUNT(Company)> 1) ''')
+       # cur.execute('''DELETE FROM history WHERE Company in (SELECT Company FROM history GROUP BY Company HAVING COUNT(Company)> 1) ''')
 
         history = pd.read_sql('SELECT * FROM history;', conn)
         # history = history.set_index('company')
 
     finally:
         cur.close()
-        #history.index = history.index + 1
+        history.index = history.index + 1
     conn.close()
 
     if st.button("View History"):
