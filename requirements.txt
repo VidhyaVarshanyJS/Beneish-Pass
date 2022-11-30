@@ -117,3 +117,4 @@ yahooquery==2.2.15
 yarg==0.1.9
 yfinance==0.1.70
 zipp==3.8.0
+mysql-connector==2.2.9

@@ -4,7 +4,7 @@ import time
 import hydralit_components as hc
 import pandas as pd
 import plotly.express as px
-import snowflake.connector as sf
+import mysql.connector as sf
 import streamlit as st
 import yfinance as yf
 from babel.numbers import format_currency
@@ -24,7 +24,7 @@ lottie_analysis = load_lottiefile("lottiefiles/analysis.json")
 lottie_hello = load_lottiefile("lottiefiles/hello.json")
 
 st.set_page_config(
-    page_title="FA",
+    page_title="Beneish Pass",
     page_icon="chart_with_upwards_trend",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -248,38 +248,40 @@ if ch:
                             SGAI(data),
                             LVGI(data),
                             TATA(data))
+    status = "The company can be a manipulator."
     if(m_score < -2.22):
         res = '##### Company is not likely to manipulate their earnings'
         st.write(f"##### M- Score = {round(m_score,2)}")
         st.write(f"{res}")
+        status = "The company is not a manipulator."
         # print(res)
     else:
-        res = " ##### Company is not likely to manipulate their earnings"
+        res = " ##### Company is likely to manipulate their earnings"
         st.write(f"##### M- Score = {round(m_score,2)}")
         st.write(f"{res}")
 
     # SnowFlake  Initialize connection.
     def init_connection():
-        return sf.connect(**st.secrets["snowflake"])
+        return sf.connect(**st.secrets["mysql"])
 
     conn = init_connection()
 
-    cur = conn.cursor()
+    cur = conn.cursor(buffered=True)
 
     try:
-        cur.execute(
-            f"INSERT INTO FAR.PUBLIC.HISTORY(COMPANY,M_SCORE) VALUES('{symb.at[ch, 'Companies']}',{round(m_score,2)})")
-        cur.execute('''DELETE FROM FAR.PUBLIC.HISTORY WHERE (COMPANY)  in 
-        (SELECT COMPANY FROM FAR.PUBLIC.HISTORY GROUP BY COMPANY HAVING COUNT(COMPANY)> 1)
+
+        cur.execute('INSERT INTO history(company,m_score,status) VALUES (%s,%s,%s)',
+                    (symb.at[ch, 'Companies'], float(m_score), status))
+        cur.execute('''DELETE FROM history WHERE company  in
+        (SELECT company FROM history GROUP BY company HAVING COUNT(company)> 1)
                     ''')
-        cur.execute(
-            'SELECT * FROM FAR.PUBLIC.HISTORY')
-        history = cur.fetch_pandas_all()
+
+        history = pd.read_sql('SELECT * FROM history;', conn)
+        # history = history.set_index('company')
 
     finally:
         cur.close()
         history.index = history.index + 1
-
     conn.close()
 
     if st.button("View History"):
