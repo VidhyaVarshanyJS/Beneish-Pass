@@ -281,7 +281,7 @@ if ch:
 
     finally:
         cur.close()
-        history.index = history.index + 1
+        #history.index = history.index + 1
     conn.close()
 
     if st.button("View History"):
