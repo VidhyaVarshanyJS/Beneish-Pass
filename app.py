@@ -15,7 +15,6 @@ import numpy as np
 from babel.numbers import format_currency
 from streamlit_lottie import st_lottie
 from functions import *
-from streamlit_disqus import st_disqus
 
 # pd.set_option('mode.chained_assignment', None)
 
