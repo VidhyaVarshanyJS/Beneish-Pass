@@ -5,7 +5,10 @@
 https://user-images.githubusercontent.com/76642252/175318109-0be85fc2-6a36-49c5-bee8-b367ac68117d.mp4
 
 ## Revamped 
-![beneish-pass](https://user-images.githubusercontent.com/76642252/226199337-98911c7c-dee8-4b99-b3d3-c3a22cfd3e00.gif)
+https://user-images.githubusercontent.com/76642252/226199431-18da8ded-baa6-4fb0-97ae-299331aecb87.mp4
+
+
+
 
 A Simple Streamlit web app to detect the manipulations in the earnings of the company using the financial Statements of various companies during the year 2021-2022
 
@@ -42,6 +45,7 @@ https://vidhyavarshany.vercel.app/how-i-built-beneish-pass-app-using-streamlit
 [Legacy version](https://vidhyavarshanyjs-beneish-pass.streamlit.app/)
 
 - Revamped:
+
 [Revamped version](https://vidhyavarshanyjs-beneish-pass-app-revamp-9b8jx0.streamlit.app)
 
 
