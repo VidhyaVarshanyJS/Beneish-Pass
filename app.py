@@ -2,18 +2,19 @@ from fuzzywuzzy import process, fuzz
 import json
 import time
 import random
+
 from streamlit_option_menu import option_menu
 import streamlit.components.v1 as html
+from streamlit_lottie import st_lottie
 from yfin.quote_summary import QuoteSummary
+from stocksymbol import StockSymbol
 import hydralit_components as hc
-import pandas as pd
 import plotly.express as px
 import streamlit as st
-from stocksymbol import StockSymbol
 import duckdb
+import pandas as pd
 import numpy as np
 from babel.numbers import format_currency
-from streamlit_lottie import st_lottie
 from functions import *
 
 # pd.set_option('mode.chained_assignment', None)
