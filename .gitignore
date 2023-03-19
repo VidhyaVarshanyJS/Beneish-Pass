@@ -2,3 +2,4 @@
 venv/
 *.xlsx
 final.py
+__pycache__/
