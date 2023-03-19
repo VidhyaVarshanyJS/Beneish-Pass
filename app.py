@@ -32,6 +32,7 @@ st.set_page_config(
     page_title="Beneish Pass",
     page_icon="chart_with_upwards_trend",
     layout="wide",
+    initial_sidebar_state="expanded"
 
 )
 
@@ -114,7 +115,7 @@ with st.sidebar:
     choose = option_menu('Beneish Pass', ["Detect Manipulation", "How it Works?", "About"],
                          icons=['bar-chart-line-fill', 'book', 'kanban',
                                 'house', 'person lines fill'],
-                         menu_icon="app-indicator", default_index=0
+                         menu_icon="app-indicator", default_index=1
                          )
     st_lottie(lottie_analysis, quality="high", key=None)
 
